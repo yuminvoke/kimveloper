@@ -1,0 +1,18 @@
+# General
+.DS_Store
+__MACOSX/
+.AppleDouble
+.LSOverride
+Icon[]
+
+# JetBrains IDEs General
+.idea/*
+
+# Python General
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Private
+.env
