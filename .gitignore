@@ -16,3 +16,4 @@ __pycache__/
 
 # Private
 .env
+.codex/
