@@ -13,7 +13,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB
 
-from backend.db.database import metadata
+from backend.app.db.connection import metadata
 
 
 analysis_results = Table(

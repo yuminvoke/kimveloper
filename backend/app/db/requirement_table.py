@@ -11,7 +11,7 @@ from sqlalchemy import (
     text,
 )
 
-from backend.db.database import metadata
+from backend.app.db.connection import metadata
 
 
 requirements = Table(

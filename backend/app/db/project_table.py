@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Identity, Integer, String, Table
 
-from backend.db.database import metadata
+from backend.app.db.connection import metadata
 
 
 projects = Table(
