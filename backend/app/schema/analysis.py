@@ -5,6 +5,11 @@ class AnalysisRequest(BaseModel):
     project_id: int = Field(gt=0)
     content: str = Field(min_length=10, max_length=5000)
 
+class RequirementResponse(BaseModel):
+    requirement_id: int = Field(gt=0)
+    project_id: int = Field(gt=0)
+    content: str
+
 class UserType(BaseModel):
     name: str
     description: str
