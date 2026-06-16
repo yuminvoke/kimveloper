@@ -2,7 +2,8 @@ from pydantic import BaseModel, Field
 
 
 class AnalysisRequest(BaseModel):
-    content: str = Field(..., min_length=10, max_length=5000)
+    project_id: int = Field(gt=0)
+    content: str = Field(min_length=10, max_length=5000)
 
 class UserType(BaseModel):
     name: str
@@ -37,6 +38,8 @@ class EdgeCase(BaseModel):
     handling: str
 
 class AnalysisResponse(BaseModel):
+    project_id: int = Field(gt=0)
+    requirement_id: int = Field(gt=0)
     summary: str
     user_types: list[UserType]
     core_features: list[Feature]
@@ -44,4 +47,5 @@ class AnalysisResponse(BaseModel):
     data_model_candidates: list[DataModelCandidate]
     develop_steps: list[DevelopStep]
     edge_cases: list[EdgeCase]
+    questions: list[str] = Field(default_factory=list)
     model_name: str
