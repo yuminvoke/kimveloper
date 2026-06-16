@@ -2,10 +2,11 @@ from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncConnection
 
 from backend.app.db import project_repository
-from backend.app.schema.project import ProjectResponse
+from backend.app.schema.project import ProjectResponse, ProjectRequest
 
 
-async def create_project(project_name: str, connection: AsyncConnection) -> ProjectResponse:
+async def create_project(project: ProjectRequest, connection: AsyncConnection) -> ProjectResponse:
+    project_name = project.name
     row = await project_repository.create_project(project_name, connection)
 
     if row is None:

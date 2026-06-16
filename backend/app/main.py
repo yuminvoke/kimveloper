@@ -1,5 +1,3 @@
-from urllib import request
-
 from fastapi import FastAPI, Depends
 from sqlalchemy.ext.asyncio import AsyncConnection
 
@@ -17,8 +15,7 @@ async def create_project(
         project: ProjectRequest,
         db: AsyncConnection = Depends(get_db_connection)
 ) -> ProjectResponse:
-    project_name = project.name
-    response = await project_service.create_project(project_name, db)
+    response = await project_service.create_project(project, db)
     return response
 
 @app.get("/project/{project_id}")
@@ -32,7 +29,7 @@ async def get_project(
 @app.get("/analysis/{analysis_id}")
 async def get_analysis(
         analysis_id: int,
-    db: AsyncConnection = Depends(get_db_connection)
+        db: AsyncConnection = Depends(get_db_connection)
 ) -> AnalysisResponse:
     response = await analysis_service.get_analysis(analysis_id=analysis_id, connection=db)
     return response
